@@ -125,18 +125,32 @@
       text-shadow: 0 2px 24px rgba(0,0,0,0.55);
     }
     header .tagline {
-      display: inline-block;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.55rem;
       margin: 0.35rem auto 0;
-      padding: 0.45rem 1.1rem;
+      padding: 0.5rem 1.15rem;
       color: #ffffff;
       font-weight: 500;
       font-size: 0.78rem;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       line-height: 1.3;
       background: #000000;
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: 999px;
+    }
+    header .tagline .visit-label {
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      font-weight: 400;
+    }
+    header .tagline .visit-count {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      color: #fff;
+      min-width: 2ch;
     }
 
     header h1 {
@@ -665,7 +679,10 @@
         <img src="theme.jpg" alt="Time Traveler mark" />
       </div>
       <h1 class="brand-title">TIME TRAVELER</h1>
-      <p class="tagline">MY WORK</p>
+      <p class="tagline" id="visitPill" aria-live="polite">
+        <span class="visit-label">Visits</span>
+        <span class="visit-count" id="visitCount">—</span>
+      </p>
     </header>
 
     <section class="grid" aria-label="Catalog">
@@ -856,6 +873,25 @@
       }
       window.addEventListener("pointerdown", unlock, { once: true });
       window.addEventListener("keydown", unlock, { once: true });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var el = document.getElementById("visitCount");
+      if (!el) return;
+      var key = "two23six";
+      var namespace = "visits";
+      fetch("https://abacus.jasoncameron.dev/hit/" + key + "/" + namespace, { cache: "no-store" })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var n = Number(data && data.value);
+          if (!isFinite(n)) throw new Error("bad count");
+          el.textContent = n.toLocaleString("en-US");
+        })
+        .catch(function () {
+          el.textContent = "—";
+        });
     })();
   </script>
 </body>
