@@ -570,6 +570,98 @@
       font-weight: 300;
       font-size: 0.95rem;
     }
+
+    .youtube-section {
+      margin-top: 2.75rem;
+      padding-top: 2.25rem;
+      border-top: 1px solid var(--line);
+    }
+    .youtube-section .sec-head {
+      text-align: center;
+      margin-bottom: 1.35rem;
+    }
+    .youtube-section .sec-kicker {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.55rem;
+    }
+    .youtube-section .sec-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    .youtube-section .sec-blurb {
+      margin-top: 0.55rem;
+      color: var(--muted);
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
+    .youtube-card {
+      max-width: 420px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.35rem 1.25rem 1.45rem;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+    .youtube-card .art {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0 auto 1.05rem;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,0.08), transparent 55%),
+        #000;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+    .youtube-card .art img {
+      width: 42%;
+      height: auto;
+      object-fit: contain;
+      opacity: 0.85;
+    }
+    .youtube-card .play {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(196, 162, 90, 0.95);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+    .youtube-card .play::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 0 10px 18px;
+      border-color: transparent transparent transparent #0b0d12;
+      margin-left: 3px;
+    }
+    .youtube-card .channel {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.35rem;
+    }
+    .youtube-card .tag {
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 300;
+      margin-bottom: 1.15rem;
+    }
+    .youtube-card .btn { margin-top: 0; }
   </style>
 </head>
 <body>
@@ -667,6 +759,24 @@
     </section>
 
 
+
+
+    <section class="youtube-section" aria-label="YouTube channel">
+      <div class="sec-head">
+        <div class="sec-kicker">Video</div>
+        <h2 class="sec-title">YouTube</h2>
+        <p class="sec-blurb">Watch. Listen. Follow the work.</p>
+      </div>
+      <div class="youtube-card">
+        <a class="art" href="https://youtube.com/@timetravel2236" target="_blank" rel="noopener" aria-label="Open YouTube channel">
+          <img src="theme.jpg" alt="" />
+          <span class="play" aria-hidden="true"></span>
+        </a>
+        <div class="channel">@timetravel2236</div>
+        <p class="tag">TIME TRAVELER on YouTube</p>
+        <a class="btn" href="https://youtube.com/@timetravel2236" target="_blank" rel="noopener">Watch on YouTube</a>
+      </div>
+    </section>
 
     <section class="publish" aria-label="Publishing services">
       <div class="sec-kicker">For authors</div>
