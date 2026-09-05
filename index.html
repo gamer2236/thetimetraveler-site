@@ -272,8 +272,11 @@
     }
     .btn.ghost:hover { filter: none; }
 
+
     footer {
-      margin-top: 3.5rem;
+      margin-top: 3.75rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
       text-align: center;
       color: var(--muted);
       font-size: 0.8rem;
@@ -282,231 +285,51 @@
     }
 
     footer a { color: var(--gold); text-decoration: none; }
-
-    .scroll-link {
-      display: flex;
+    footer .x-final {
+      display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin: 0 0 2.25rem;
-      padding: 1.05rem 1.25rem;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(16, 19, 26, 0.55);
-      backdrop-filter: blur(10px);
+      gap: 0.55rem;
+      margin: 0 auto 1.35rem;
       text-decoration: none;
       color: var(--ink);
-      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
-    .scroll-link:hover {
-      border-color: rgba(196, 162, 90, 0.4);
+    footer .x-final:hover {
+      color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.28);
     }
-    .scroll-link .left {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      min-width: 0;
+    footer .x-final .x-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(232,230,224,0.22);
+      display: grid;
+      place-items: center;
+      background: rgba(16,19,26,0.85);
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: #fff;
     }
-    .scroll-link .kicker {
-      font-size: 0.68rem;
+    footer .x-final .x-handle {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    footer .x-final .x-note {
+      font-size: 0.72rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
+      font-weight: 400;
     }
-    .scroll-link .title {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 1.35rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
+    footer .credit {
+      margin-top: 0.35rem;
+      opacity: 0.85;
     }
-    .scroll-link .blurb {
-      color: var(--muted);
-      font-size: 0.88rem;
-      font-weight: 300;
-      line-height: 1.4;
-    }
-    .scroll-link .go {
-      flex-shrink: 0;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #0b0d12;
-      background: linear-gradient(180deg, #e8e2d4, #c4a25a);
-      padding: 0.65rem 0.95rem;
-      border-radius: 999px;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-    @media (max-width: 560px) {
-      .scroll-link { flex-direction: column; align-items: flex-start; }
-      .scroll-link .go { align-self: stretch; text-align: center; }
-    }
-
-    .music {
-      position: fixed;
-      right: 1.1rem;
-      bottom: 1.1rem;
-      z-index: 10;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.55rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(16, 19, 26, 0.82);
-      backdrop-filter: blur(10px);
-      color: var(--ink);
-      font-family: "Outfit", system-ui, sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: border-color 0.2s ease, color 0.2s ease;
-    }
-    .music:hover { border-color: rgba(196, 162, 90, 0.45); color: #f0ebe0; }
-    .music .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--muted);
-      box-shadow: 0 0 0 0 rgba(196, 162, 90, 0.4);
-    }
-    .music.on .dot {
-      background: var(--gold);
-      animation: pulse 1.8s ease-out infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(196, 162, 90, 0.45); }
-      70% { box-shadow: 0 0 0 10px rgba(196, 162, 90, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(196, 162, 90, 0); }
-    }
-
-    .scroll-cover .mark {
-      border-color: rgba(196, 162, 90, 0.55);
-      box-shadow: 0 0 24px rgba(196, 162, 90, 0.12);
-    }
-
-    .music-section {
-      margin-top: 2.75rem;
-      padding-top: 2.25rem;
-      border-top: 1px solid var(--line);
-    }
-    .music-section .sec-head {
-      text-align: center;
-      margin-bottom: 1.35rem;
-    }
-    .music-section .sec-kicker {
-      font-size: 0.68rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.55rem;
-    }
-    .music-section .sec-title {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      font-weight: 600;
-      letter-spacing: 0.06em;
-    }
-    .music-section .sec-blurb {
-      margin-top: 0.55rem;
-      color: var(--muted);
-      font-weight: 300;
-      font-size: 0.95rem;
-    }
-    .music-card {
-      max-width: 420px;
-      margin: 0 auto;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1.35rem 1.25rem 1.45rem;
-      backdrop-filter: blur(10px);
-      text-align: center;
-    }
-    .music-card .band {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 1.55rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.35rem;
-    }
-    .music-card .tag {
-      color: var(--muted);
-      font-size: 0.86rem;
-      font-weight: 300;
-      margin-bottom: 1.15rem;
-    }
-    .music-card .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      justify-content: center;
-    }
-    .music-card .actions .btn {
-      margin-top: 0;
-      min-width: 9.5rem;
-    }
-
-    .music-card .art {
-      width: 100%;
-      aspect-ratio: 3 / 2;
-      border-radius: 10px;
-      overflow: hidden;
-      margin: 0 auto 1.05rem;
-      border: 1px solid var(--line);
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .music-card .art img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .support {
-      margin-top: 2.75rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--line);
-      text-align: center;
-    }
-    .support .sec-kicker {
-      font-size: 0.68rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.85rem;
-    }
-    .support .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      justify-content: center;
-    }
-    .support .actions .btn {
-      margin-top: 0;
-      min-width: 9.5rem;
-    }
-
-    footer .social {
-      margin-top: 0.85rem;
-      display: flex;
-      justify-content: center;
-      gap: 0.85rem;
-    }
-    footer .social a {
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      font-size: 0.78rem;
-      transition: color 0.2s ease;
-    }
-    footer .social a:hover { color: var(--gold); }
 
     .publish {
       margin-top: 2.75rem;
@@ -870,11 +693,12 @@
     </section>
 
     <footer>
-      Dustin Layton
-      <div class="social">
-        <a href="https://x.com/TheTimeTraveler" target="_blank" rel="noopener">X · @TheTimeTraveler</a>
-        <a href="https://youtube.com/@timetravel2236" target="_blank" rel="noopener">YouTube</a>
-      </div>
+      <a class="x-final" href="https://x.com/TheTimeTraveler" target="_blank" rel="noopener">
+        <span class="x-note">Follow</span>
+        <span class="x-mark" aria-hidden="true">𝕏</span>
+        <span class="x-handle">@TheTimeTraveler</span>
+      </a>
+      <div class="credit">Dustin Layton</div>
     </footer>
   </main>
 
