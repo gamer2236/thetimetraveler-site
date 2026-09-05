@@ -880,7 +880,7 @@
     (function () {
       var el = document.getElementById("visitCount");
       if (!el) return;
-      var key = "two23six";
+      var key = "two23six-live";
       var namespace = "visits";
       fetch("https://abacus.jasoncameron.dev/hit/" + key + "/" + namespace, { cache: "no-store" })
         .then(function (r) { return r.json(); })
