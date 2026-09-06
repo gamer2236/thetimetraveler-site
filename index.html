@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TIME TRAVELER</title>
+  <!-- ttb-layout:v5 -->
   <meta name="description" content="MY WORK — books, music, The Time Traveler Bible, and more from TIME TRAVELER." />
   <meta property="og:title" content="TIME TRAVELER" />
   <meta property="og:description" content="MY WORK" />
@@ -300,20 +301,23 @@
     .card-actions .btn { margin-top: 0; width: 100%; }
 
     .card.bible-card {
-      max-width: 320px;
+      max-width: 360px;
       margin-left: auto;
       margin-right: auto;
     }
     @media (min-width: 720px) {
-      .card.bible-card { max-width: 340px; }
+      .card.bible-card { max-width: 380px; }
     }
     .card.bible-card .cover {
-      aspect-ratio: 3 / 2;
+      aspect-ratio: auto;
+      height: auto;
       background: #070608;
     }
     .card.bible-card .cover img {
-      object-fit: cover;
-      object-position: center;
+      width: 100%;
+      height: auto;
+      object-fit: unset;
+      display: block;
     }
     .card-actions .btn.secondary {
       background: transparent;
@@ -748,7 +752,7 @@
 
       <article class="card bible-card">
         <div class="cover">
-          <img src="covers/the-scroll.png?v=ttb4" alt="The Time Traveler Bible cover" />
+          <img src="covers/ttb-banner.png?v=1" alt="The Time Traveler Bible cover" />
         </div>
         <div class="meta">
           <p class="sub">The full Bible — every book, including those removed — in chronological order.</p>
