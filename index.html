@@ -290,6 +290,22 @@
     .btn.ghost:hover { filter: none; }
 
 
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.35rem;
+    }
+    .card-actions .btn { margin-top: 0; width: 100%; }
+    .card-actions .btn.secondary {
+      background: transparent;
+      color: #e8e2d4;
+      border: 1px solid rgba(232,226,212,0.28);
+    }
+    .card-actions .btn.secondary:hover { filter: brightness(1.12); border-color: rgba(232,226,212,0.5); }
+
+
+
     footer {
       margin-top: 3.75rem;
       padding-top: 2rem;
@@ -719,7 +735,10 @@
         <div class="meta">
           <h2>The Time Travelers Bible</h2>
           <p class="sub">The full Bible — every book, including those removed — in chronological order.</p>
-          <a class="btn" href="https://gamer2236.github.io/the-scroll/" target="_blank" rel="noopener">Read Free</a>
+          <div class="card-actions">
+            <a class="btn" href="https://gamer2236.github.io/the-scroll/" target="_blank" rel="noopener">Read Online</a>
+            <a class="btn secondary" href="https://gamer2236.github.io/the-scroll/?install=1" target="_blank" rel="noopener">Download App</a>
+          </div>
         </div>
       </article>
     </section>
