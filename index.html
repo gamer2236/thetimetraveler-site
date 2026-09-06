@@ -386,39 +386,6 @@
       opacity: 0.85;
     }
 
-    .publish {
-      margin-top: 2.75rem;
-      padding: 1.35rem 1.25rem 1.45rem;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(16, 19, 26, 0.55);
-      backdrop-filter: blur(10px);
-      text-align: center;
-    }
-    .publish .sec-kicker {
-      font-size: 0.68rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.55rem;
-    }
-    .publish h2 {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(1.45rem, 3.5vw, 1.9rem);
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      margin-bottom: 0.45rem;
-    }
-    .publish p {
-      color: var(--muted);
-      font-weight: 300;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      max-width: 34rem;
-      margin: 0 auto 1.05rem;
-    }
-    .publish .btn { margin-top: 0; }
-    .publish strong { color: var(--ink); font-weight: 500; letter-spacing: 0.06em; }
 
     .comics-section {
       margin-top: 2.75rem;
@@ -840,12 +807,6 @@
         </div>
       </div>
     </section>
-    <section class="publish" aria-label="Publishing services">
-      <div class="sec-kicker">For authors</div>
-      <h2>I publish books too</h2>
-      <p>Bring your manuscript. I help get it into the world — and quotes are free. DM me on X with <strong>BOOK QUOTE</strong>.</p>
-      <a class="btn" href="https://x.com/TheTimeTraveler" target="_blank" rel="noopener">DM me · BOOK QUOTE</a>
-    </section>
 
     <section class="support" aria-label="Support the work">
       <div class="sec-kicker">Support the work</div>
@@ -865,59 +826,6 @@
     </footer>
   </main>
 
-  <audio id="ambient" src="ambient.mp3" loop preload="auto" playsinline></audio>
-  <button type="button" class="music" id="musicBtn" aria-pressed="false" title="Play or pause music">
-    <span class="dot" aria-hidden="true"></span>
-    <span id="musicLabel">Play music</span>
-  </button>
-  <script>
-    (function () {
-      var audio = document.getElementById("ambient");
-      var btn = document.getElementById("musicBtn");
-      var label = document.getElementById("musicLabel");
-      if (!audio || !btn) return;
-
-      audio.volume = 0.22;
-
-      function setUI(playing) {
-        btn.classList.toggle("on", playing);
-        btn.setAttribute("aria-pressed", playing ? "true" : "false");
-        label.textContent = playing ? "Sound on" : "Play music";
-      }
-
-      function play() {
-        return audio.play().then(function () {
-          setUI(true);
-          return true;
-        }).catch(function () {
-          setUI(false);
-          return false;
-        });
-      }
-
-      function pause() {
-        audio.pause();
-        setUI(false);
-      }
-
-      btn.addEventListener("click", function () {
-        if (audio.paused) play();
-        else pause();
-      });
-
-      // Try autoplay on load (works in some browsers / when allowed)
-      play();
-
-      // If blocked, start on first tap/click anywhere
-      function unlock() {
-        if (audio.paused) play();
-        window.removeEventListener("pointerdown", unlock);
-        window.removeEventListener("keydown", unlock);
-      }
-      window.addEventListener("pointerdown", unlock, { once: true });
-      window.addEventListener("keydown", unlock, { once: true });
-    })();
-  </script>
 
   <script>
     (function () {
