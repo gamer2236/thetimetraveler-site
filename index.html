@@ -759,6 +759,65 @@
       margin-right: auto;
     }
 
+
+    .coffee-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      padding: 0.75rem;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(16, 19, 26, 0.55);
+      backdrop-filter: blur(10px);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .coffee-duo .card {
+      min-width: 0;
+      background: rgba(12, 14, 20, 0.65);
+    }
+    .coffee-duo .meta {
+      padding: 0.85rem 0.7rem 1rem;
+      gap: 0.35rem;
+    }
+    .coffee-duo .meta h2 {
+      font-size: clamp(0.95rem, 3.6vw, 1.15rem);
+      line-height: 1.2;
+    }
+    .coffee-duo .meta .sub {
+      font-size: 0.72rem;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .coffee-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .coffee-actions .btn {
+      margin-top: 0;
+      min-width: 11rem;
+    }
+    @media (min-width: 720px) {
+      .coffee-duo {
+        gap: 1.15rem;
+        padding: 1.1rem;
+      }
+      .coffee-duo .meta {
+        padding: 1.1rem 1.05rem 1.25rem;
+      }
+      .coffee-duo .meta h2 { font-size: 1.3rem; }
+      .coffee-duo .meta .sub {
+        font-size: 0.86rem;
+        -webkit-line-clamp: unset;
+        display: block;
+        overflow: visible;
+      }
+    }
+
     .support {
       margin-top: 2.75rem;
       padding-top: 2rem;
@@ -808,17 +867,28 @@
         <h2 class="sec-title">Time Traveler Coffee</h2>
         <p class="sec-blurb">Private-label coffee — bags and pods. Shop opens soon.</p>
       </div>
-      <div class="grid" style="max-width: 320px; margin: 0 auto;">
+      <div class="coffee-duo">
         <article class="card">
           <div class="cover">
-            <img src="covers/time-traveler-coffee.png" alt="Time Traveler Coffee" />
+            <img src="covers/coffee-born-again.png" alt="Born Again coffee" />
           </div>
           <div class="meta">
-            <h2>Time Traveler Coffee</h2>
-            <p class="sub">Dark, medium, decaf, and more — roasted to order.</p>
-            <a class="btn ghost" href="#" aria-disabled="true" onclick="return false;">Coming soon</a>
+            <h2>Born Again</h2>
+            <p class="sub">A great cup for the mind of Christ.</p>
           </div>
         </article>
+        <article class="card">
+          <div class="cover">
+            <img src="covers/coffee-xrp-army.png" alt="XRP Army / Diamond Hands coffee" />
+          </div>
+          <div class="meta">
+            <h2>XRP Army</h2>
+            <p class="sub">Diamond hands. 589.</p>
+          </div>
+        </article>
+      </div>
+      <div class="coffee-actions">
+        <a class="btn ghost" href="#" aria-disabled="true" onclick="return false;">Coming soon</a>
       </div>
     </section>
 
