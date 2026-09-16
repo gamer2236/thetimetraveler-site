@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TIME TRAVELER</title>
-  <meta name="tt-cache" content="20260915-featured-duo" />
+  <meta name="tt-cache" content="20260915-no-visits" />
   <!-- ttb-layout:v5 -->
   <meta name="description" content="MY WORK — books, coffee, music, The Time Traveler Bible, and more from TIME TRAVELER." />
   <meta property="og:title" content="Two23siX.com" />
@@ -126,37 +126,6 @@
       text-transform: uppercase;
       margin: 0.15rem 0 0.85rem;
       text-shadow: 0 2px 24px rgba(0,0,0,0.55);
-    }
-    header .tagline {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 0.6rem;
-      margin: 0.35rem auto 0;
-      padding: 0.58rem 1.3rem;
-      color: #ffffff;
-      font-weight: 500;
-      font-size: 0.98rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      line-height: 1.3;
-      background: #000000;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 999px;
-      max-width: none;
-      white-space: nowrap;
-    }
-    header .tagline .visit-label {
-      letter-spacing: 0.28em;
-      color: var(--gold);
-      font-weight: 400;
-    }
-    header .tagline .visit-count {
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.04em;
-      font-weight: 600;
-      color: #fff;
-      min-width: 2ch;
-      white-space: nowrap;
     }
 
     header h1 {
@@ -865,10 +834,6 @@
         <img src="theme.jpg" alt="Time Traveler mark" />
       </div>
       <h1 class="brand-title">TIME TRAVELER</h1>
-      <p class="tagline" id="visitPill" aria-live="polite">
-        <span class="visit-label">Visits</span>
-        <span class="visit-count" id="visitCount">—</span>
-      </p>
     </header>
 
 
@@ -1038,35 +1003,6 @@
   </main>
 
 
-  <script>
-    (function () {
-      var el = document.getElementById("visitCount");
-      if (!el) return;
-      var ns = "two23six-live";
-      var key = "visits";
-      var base = "https://abacus.jasoncameron.dev/";
-      function show(data) {
-        var n = Number(data && data.value);
-        if (!isFinite(n)) throw new Error("bad count");
-        el.textContent = n.toLocaleString("en-US");
-      }
-      function getJson(path) {
-        return fetch(base + path, { cache: "no-store", mode: "cors" }).then(function (r) {
-          if (!r.ok) throw new Error("http " + r.status);
-          return r.json();
-        });
-      }
-      // /hit/ is often blocked by ad blockers; fall back to /get/ so the number still shows
-      getJson("hit/" + ns + "/" + key)
-        .then(show)
-        .catch(function () {
-          return getJson("get/" + ns + "/" + key).then(show);
-        })
-        .catch(function () {
-          el.textContent = "—";
-        });
-    })();
-  </script>
 <!-- bible-btns-v2 -->
 </body>
 </html>
