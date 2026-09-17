@@ -153,9 +153,10 @@
       flex-direction: column;
       gap: 1.5rem;
     }
-    .books-duo {
+    .books-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
       gap: 0.7rem;
       padding: 0.75rem;
       border-radius: 18px;
@@ -163,19 +164,21 @@
       background: rgba(16, 19, 26, 0.55);
       backdrop-filter: blur(10px);
     }
-    .books-duo .card {
+    .books-grid .card {
       min-width: 0;
+      height: 100%;
       background: rgba(12, 14, 20, 0.65);
     }
-    .books-duo .meta {
+    .books-grid .meta {
+      min-height: 11.5rem;
       padding: 0.85rem 0.7rem 1rem;
       gap: 0.4rem;
     }
-    .books-duo .meta h2 {
+    .books-grid .meta h2 {
       font-size: clamp(0.95rem, 3.6vw, 1.15rem);
       line-height: 1.2;
     }
-    .books-duo .meta .sub {
+    .books-grid .meta .sub {
       font-size: 0.72rem;
       line-height: 1.35;
       display: -webkit-box;
@@ -183,33 +186,40 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .books-duo .btn {
+    .books-grid .btn {
       margin-top: 0.35rem;
       padding: 0.58rem 0.55rem;
       font-size: 0.68rem;
       letter-spacing: 0.06em;
       width: 100%;
     }
+    .books-grid .btn.disabled {
+      cursor: default;
+      opacity: 0.62;
+      pointer-events: none;
+    }
+    .books-grid .btn.disabled:hover { filter: none; }
     @media (min-width: 720px) {
-      .books-duo {
-        grid-template-columns: 1fr 1fr;
+      .books-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.15rem;
         padding: 1.1rem;
         max-width: 720px;
         margin: 0 auto;
         width: 100%;
       }
-      .books-duo .meta {
+      .books-grid .meta {
+        min-height: 10.5rem;
         padding: 1.1rem 1.05rem 1.25rem;
       }
-      .books-duo .meta h2 { font-size: 1.3rem; }
-      .books-duo .meta .sub {
+      .books-grid .meta h2 { font-size: 1.3rem; }
+      .books-grid .meta .sub {
         font-size: 0.86rem;
         -webkit-line-clamp: unset;
         display: block;
         overflow: visible;
       }
-      .books-duo .btn {
+      .books-grid .btn {
         font-size: 0.78rem;
         padding: 0.68rem 0.85rem;
       }
@@ -702,7 +712,7 @@
     </section>
 
     <section class="catalog" aria-label="Catalog">
-      <div class="books-duo">
+      <div class="books-grid">
         <article class="card">
           <div class="cover">
             <img src="covers/time-traveler.png" alt="Time Traveler cover" />
@@ -722,6 +732,28 @@
             <h2>Dealing with Devils</h2>
             <p class="sub">Survival, temptation, and the cost of erasing the world.</p>
             <a class="btn" href="https://a.co/d/0d0iMEwG" target="_blank" rel="noopener">Get the book</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cover">
+            <img src="covers/no-escape-from-martyrdom.png" alt="No Escape from Martyrdom cover" />
+          </div>
+          <div class="meta">
+            <h2>No Escape from Martyrdom</h2>
+            <p class="sub">Exposing the Pre-Tribulation Rapture Lie.</p>
+            <span class="btn disabled" aria-disabled="true">Coming Soon</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cover">
+            <img src="covers/before-i-knew-better.png" alt="Before I Knew Better cover" />
+          </div>
+          <div class="meta">
+            <h2>Before I Knew Better</h2>
+            <p class="sub">A record of where I started.</p>
+            <span class="btn disabled" aria-disabled="true">Coming Soon</span>
           </div>
         </article>
       </div>
