@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TIME TRAVELER</title>
-  <meta name="tt-cache" content="20260915-music-top" />
+  <meta name="tt-cache" content="20260922-books-scroll-spotify" />
   <!-- ttb-layout:v5 -->
   <meta name="description" content="MY WORK — books, coffee, music, The Time Traveler Bible, and more from TIME TRAVELER." />
   <meta property="og:title" content="Two23siX.com" />
@@ -154,23 +154,42 @@
       gap: 1.5rem;
     }
     .books-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: 1fr;
-      gap: 0.7rem;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 0.75rem;
       padding: 0.75rem;
       border-radius: 18px;
       border: 1px solid var(--line);
       background: rgba(16, 19, 26, 0.55);
       backdrop-filter: blur(10px);
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(196, 162, 90, 0.45) rgba(0, 0, 0, 0.35);
+    }
+    .books-grid::-webkit-scrollbar { height: 8px; }
+    .books-grid::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 999px;
+    }
+    .books-grid::-webkit-scrollbar-thumb {
+      background: rgba(196, 162, 90, 0.45);
+      border-radius: 999px;
     }
     .books-grid .card {
-      min-width: 0;
-      height: 100%;
+      flex: 0 0 auto;
+      width: min(300px, 46%);
+      min-width: min(280px, 46%);
+      max-width: 320px;
+      scroll-snap-align: start;
+      height: auto;
       background: rgba(12, 14, 20, 0.65);
     }
     .books-grid .meta {
-      min-height: 11.5rem;
+      min-height: 10.5rem;
       padding: 0.85rem 0.7rem 1rem;
       gap: 0.4rem;
     }
@@ -201,23 +220,27 @@
     .books-grid .btn.disabled:hover { filter: none; }
     @media (min-width: 720px) {
       .books-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.15rem;
+        gap: 1rem;
         padding: 1.1rem;
         max-width: 720px;
         margin: 0 auto;
         width: 100%;
       }
+      .books-grid .card {
+        width: 48%;
+        min-width: 280px;
+        max-width: 320px;
+      }
       .books-grid .meta {
-        min-height: 10.5rem;
+        min-height: 9.5rem;
         padding: 1.1rem 1.05rem 1.25rem;
       }
-      .books-grid .meta h2 { font-size: 1.3rem; }
+      .books-grid .meta h2 { font-size: 1.25rem; }
       .books-grid .meta .sub {
-        font-size: 0.86rem;
-        -webkit-line-clamp: unset;
-        display: block;
-        overflow: visible;
+        font-size: 0.84rem;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        overflow: hidden;
       }
       .books-grid .btn {
         font-size: 0.78rem;
@@ -652,6 +675,31 @@
       margin-top: 0;
       min-width: 9.5rem;
     }
+    .spotify-embed {
+      max-width: 560px;
+      margin: 1.35rem auto 0;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(16, 19, 26, 0.55);
+      backdrop-filter: blur(10px);
+      padding: 0.95rem 0.95rem 0.85rem;
+      overflow: hidden;
+    }
+    .spotify-embed .embed-kicker {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    .spotify-embed iframe {
+      display: block;
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      background: #000;
+    }
 
 
     .support {
@@ -709,6 +757,10 @@
           <a class="btn" href="https://music.apple.com/us/artist/two23six/1858863099" id="link-apple" target="_blank" rel="noopener">Apple Music</a>
         </div>
       </div>
+      <div class="spotify-embed">
+        <div class="embed-kicker">Top tracks</div>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/2igfGSFCEqgYjquXBM4D6W?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
     </section>
 
     <section class="catalog" aria-label="Catalog">
@@ -726,12 +778,12 @@
 
         <article class="card">
           <div class="cover">
-            <img src="covers/dealing-with-devils.png" alt="Dealing with Devils cover" />
+            <img src="covers/before-i-knew-better.png" alt="Before I Knew Better cover" />
           </div>
           <div class="meta">
-            <h2>Dealing with Devils</h2>
-            <p class="sub">Survival, temptation, and the cost of erasing the world.</p>
-            <a class="btn" href="https://a.co/d/0d0iMEwG" target="_blank" rel="noopener">Get the book</a>
+            <h2>Before I Knew Better</h2>
+            <p class="sub">A record of where I started.</p>
+            <a class="btn" href="https://a.co/d/0iceDD47" target="_blank" rel="noopener">Get the book</a>
           </div>
         </article>
 
@@ -748,12 +800,34 @@
 
         <article class="card">
           <div class="cover">
-            <img src="covers/before-i-knew-better.png" alt="Before I Knew Better cover" />
+            <img src="covers/dealing-with-devils.png" alt="Dealing with Devils cover" />
           </div>
           <div class="meta">
-            <h2>Before I Knew Better</h2>
-            <p class="sub">A record of where I started.</p>
-            <a class="btn" href="https://a.co/d/0iceDD47" target="_blank" rel="noopener">Get the book</a>
+            <h2>Dealing with Devils</h2>
+            <p class="sub">Survival, temptation, and the cost of erasing the world.</p>
+            <a class="btn" href="https://a.co/d/0d0iMEwG" target="_blank" rel="noopener">Get the book</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cover">
+            <img src="covers/dealing-with-angels.png" alt="Dealing with Angels cover" />
+          </div>
+          <div class="meta">
+            <h2>Dealing with Angels</h2>
+            <p class="sub">A Dealing with Devils novel — trust the unease.</p>
+            <span class="btn disabled" aria-disabled="true">Coming Soon</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cover">
+            <img src="covers/1984-the-army-of-two.png" alt="1984 The Army of Two cover" />
+          </div>
+          <div class="meta">
+            <h2>1984 The Army of Two</h2>
+            <p class="sub">The Two Witnesses of Bible Prophecy Revealed.</p>
+            <span class="btn disabled" aria-disabled="true">Coming Soon</span>
           </div>
         </article>
       </div>
