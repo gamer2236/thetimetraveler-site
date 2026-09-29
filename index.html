@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TIME TRAVELER</title>
-  <meta name="tt-cache" content="20260922-books-scroll-spotify" />
+  <meta name="tt-cache" content="20260929-contact-top" />
   <!-- ttb-layout:v5 -->
   <meta name="description" content="MY WORK — books, coffee, music, The Time Traveler Bible, and more from TIME TRAVELER." />
   <meta property="og:title" content="Two23siX.com" />
@@ -98,7 +98,7 @@
       z-index: 2;
       max-width: 980px;
       margin: 0 auto;
-      padding: 3.25rem 1.5rem 5rem;
+      padding: 5rem 1.5rem 5rem;
     }
 
     header {
@@ -725,9 +725,65 @@
       margin-top: 0;
       min-width: 9.5rem;
     }
+
+    .contact-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.7rem 1rem;
+      background: rgba(0, 0, 0, 0.92);
+      border-bottom: 1px solid rgba(196, 162, 90, 0.35);
+      backdrop-filter: blur(10px);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-bar .label {
+      color: var(--gold);
+      font-weight: 400;
+    }
+    .contact-bar a {
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      font-size: 0.92rem;
+      border-bottom: 1px solid rgba(196, 162, 90, 0.45);
+      padding-bottom: 1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .contact-bar a:hover {
+      color: #fff;
+      border-bottom-color: var(--gold);
+    }
+    @media (max-width: 520px) {
+      .contact-bar {
+        flex-direction: column;
+        gap: 0.2rem;
+        padding: 0.65rem 0.85rem;
+        letter-spacing: 0.1em;
+      }
+      .contact-bar a {
+        font-size: 0.88rem;
+        letter-spacing: 0.04em;
+      }
+    }
+
   </style>
 </head>
 <body>
+  <div class="contact-bar">
+    <span class="label">Contact</span>
+    <a href="mailto:contact@two23six.com">contact@two23six.com</a>
+  </div>
+
   <div class="sky" aria-hidden="true"></div>
   <div class="theme-mark" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
