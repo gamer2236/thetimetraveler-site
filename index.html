@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TIME TRAVELER</title>
-  <meta name="tt-cache" content="20261003-books-section" />
+  <meta name="tt-cache" content="20261003-swipe-arrow" />
   <!-- ttb-layout:v5 -->
   <meta name="description" content="MY WORK — books, coffee, music, The Time Traveler Bible, and more from TIME TRAVELER." />
   <meta property="og:title" content="Two23siX.com" />
@@ -467,6 +467,28 @@
       font-size: clamp(1.8rem, 4vw, 2.4rem);
       font-weight: 600;
       letter-spacing: 0.06em;
+    }
+
+    .swipe-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      margin: 1rem 0 0.15rem;
+      color: #fff;
+      font-size: 0.95rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .swipe-arrow {
+      font-size: 2.4rem;
+      line-height: 1;
+      color: #fff;
+      animation: swipe-nudge 1.1s ease-in-out infinite;
+    }
+    @keyframes swipe-nudge {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
     }
 
     .bible-section {
@@ -947,6 +969,7 @@
           </div>
         </article>
       </div>
+      <p class="swipe-hint" aria-hidden="true"><span>Swipe</span><span class="swipe-arrow">→</span></p>
     </section>
 
     <section class="nft-section" aria-label="NFT Collection">
