@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Pre-Trip">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Pre-Trip Inspection</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#000;color:#f2f2f2;font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+header{position:sticky;top:0;background:#000;padding:14px 16px 10px;padding-top:max(14px,env(safe-area-inset-top));border-bottom:1px solid #222;display:flex;justify-content:space-between;align-items:center;z-index:2}
+h1{font-size:20px;margin:0;letter-spacing:.5px}
+#count{font-size:15px;color:#aaa;font-variant-numeric:tabular-nums}
+#count.done{color:#2ecc40}
+main{padding:0 12px 40px}
+h2{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#9a9a9a;margin:24px 4px 8px}
+.item{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;background:#0d0d0d;border:1px solid #222;border-radius:12px;padding:14px;margin:8px 0;color:inherit;font:inherit;cursor:pointer}
+.box{flex:0 0 36px;height:36px;border:2px solid #777;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:transparent}
+.item.on .box{background:#2ecc40;border-color:#2ecc40;color:#000}
+.item.on{border-color:#1f5f2a}
+.item.on b{color:#bfbfbf}
+b{display:block;font-size:17px;margin:2px 0 4px;color:#fff}
+small{display:block;font-size:14px;line-height:1.35;color:#b5b5b5}
+</style></head><body>
+<header><h1>PRE-TRIP INSPECTION</h1><span id="count">0/0</span></header>
+<main id="list"></main>
+<script>
+var S=[
+["Front of Vehicle/Engine Area",[
+["General Overview","Step back and verify the vehicle is not leaning side to side or front to rear"],
+["Lenses","All lights, lenses and reflectors are the proper color, clean, not broken or missing"],
+["Open the Hood",""],
+["Fluid Levels","Check for proper Oil Level: Pull out dipstick and clean cloth. Re-insert and check fluid is at the proper level between the add and full mark. Coolant Fluid reservoir: Cap is present and fluid is proper level between the add and full mark. Power steering fluid reservoir: Cap is present and fluid is proper level between the add and full mark"],
+["Fluid and Air Leaks","No puddles on the ground. No dripping fluids under the engine and transmission compartment. All hoses and air lines are in good condition and not leaking"],
+["Steering Systems","Power steering gear box is securely mounted and not leaking. All steering hoses and connections are not cracked, worn, or leaking. The steering system has no missing nuts, bolts, or cotter keys. All connecting links, arms and rods from the steering box to the wheel are not cracked and the joints and sockets are not loose"],
+["Springs/Mounts and Shocks","Leaf springs, spring mounts, and U-Bolts are not shifted, missing or broken and have no missing parts. Shock absorber is secure, not damaged and not leaking. Vehicle is not leaning front to rear or side to side"],
+["Brake Hoses & Leaks","Hoses are not leaking, cracked or worn and all fittings and couplings are secure"],
+["Brake Contaminants","No oil or grease on the brake pad or drum"]]],
+["Steering Axle",[
+["Tires","Valve stem is accessible not damaged or broken with the cap not missing, check air pressure with tire gauge. The tread and sidewalls have no bumps, bulges or wires exposed. And no mismatched tires. Check tread depth with a gauge for minimum 4/32 on the steer tire"],
+["Rims","Not cracked or damaged and can not have welding repairs. All studs and lug nuts are not missing, and all bolt holes are not out of round"],
+["Lug Nuts","All studs and lug nuts are not loose or broken and have no shiny threads indicating looseness"]]],
+["Side of Vehicle",[
+["Lenses","All lights, lenses and reflectors are the proper color, clean, not broken or missing"],
+["Traffic Monitoring Devices (Mirrors)","Are clean, not cracked. Mirror brackets are securely mounted and not bent with no missing parts"],
+["Battery","Batteries are secure and all connections are tight with no signs of excessive corrosion. All battery cables and lines are secure and not cracked. The battery box door is secure- must inspect full battery box"],
+["Fuel Tank/DEF Tank","Securely mounted, caps are tight and there are no leaks from the tanks or lines"],
+["Tractor Frame","Frame members have no cracks, broken welds, holes or damage"]]],
+["Combination Vehicle/Coupling",[
+["Air & Electrical Lines & Connectors","Are connected and sealed to the tractor and trailer and are not damaged and locked into place. Air hoses and electrical line are not cut, cracked, chafed, spliced and are not leaking. Air hoses and electrical line are not tangled, crimped or dragging the ground"],
+["Fifth Wheel Skid Plate","Is securely mounted by the platform, has no cracks or breaks and is properly greased"],
+["Kingpin/Apron & Gap","Kingpin is in place and not bent or damaged. Apron is not bent or broken. There is no gap between the apron and fifth wheel and is properly greased"],
+["Locking & Safety Devices","Locking jaw is fully secured around the kingpin (Secure and Play). Release arm in the locked position and safety latch is in place. Sliding fifth wheel locking pins are not damaged and are in the locked position"]]],
+["Trailer Only",[
+["Landing Gear & Clearance","Landing gear is fully raised. Handle is secured. The frame and landing pads are not damaged and have no missing parts. Have proper clearance on the landing gear to make all turns"],
+["Trailer Frame","Frame members have no cracks, broken welds, holes or damage to the floor. Tandem release lever and pins are secure"],
+["Reflective Tape","Make sure all reflective tape on side and rear of trailer are present and secured to the vehicle"]]],
+["Rear of Trailer",[
+["Lenses & Reflectors","All lights, lenses and reflectors are the proper color, clean, not broken or missing"]]]
+];
+var list=document.getElementById('list'),cnt=document.getElementById('count'),rows=[];
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+S.forEach(function(sec){var h=document.createElement('h2');h.textContent=sec[0];list.appendChild(h);
+sec[1].forEach(function(it){var b=document.createElement('button');b.className='item';b.type='button';
+b.innerHTML='<span class="box">&#10003;</span><span><b>'+esc(it[0])+'</b>'+(it[1]?'<small>'+esc(it[1])+'</small>':'')+'</span>';
+b.onclick=function(){b.classList.toggle('on');upd()};list.appendChild(b);rows.push(b)})});
+function upd(){var n=rows.filter(function(r){return r.classList.contains('on')}).length;cnt.textContent=n+'/'+rows.length;cnt.className=n==rows.length?'done':''}
+function reset(){rows.forEach(function(r){r.classList.remove('on')});upd();window.scrollTo(0,0)}
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')reset()});
+window.addEventListener('pagehide',reset);window.addEventListener('pageshow',function(e){if(e.persisted)reset()});
+upd();
+</script></body></html>
