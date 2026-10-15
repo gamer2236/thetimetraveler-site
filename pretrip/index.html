@@ -2,33 +2,31 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Pre-Trip">
 <meta name="robots" content="noindex">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="icon-192.png">
 <title>Pre-Trip Inspection</title>
-<style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:#000;color:#f2f2f2;font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-header{position:sticky;top:0;background:#000;padding:14px 16px 10px;padding-top:max(14px,env(safe-area-inset-top));border-bottom:1px solid #222;display:flex;justify-content:space-between;align-items:center;z-index:2}
-h1{font-size:20px;margin:0;letter-spacing:.5px}
-#count{font-size:15px;color:#aaa;font-variant-numeric:tabular-nums}
-#count.done{color:#2ecc40}
+<style>*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#fff;color:#111;font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+header{position:sticky;top:0;background:#fff;padding:14px 16px 10px;padding-top:max(14px,env(safe-area-inset-top));border-bottom:2px solid #111;display:flex;justify-content:space-between;align-items:center;z-index:2}
+h1{font-size:20px;margin:0;letter-spacing:.5px;color:#000}
+#count{font-size:16px;font-weight:700;color:#111;font-variant-numeric:tabular-nums}
+#count.done{color:#0b5d1e}
 main{padding:0 12px 40px}
-h2{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#9a9a9a;margin:24px 4px 8px}
-.item{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;background:#0d0d0d;border:1px solid #222;border-radius:12px;padding:14px;margin:8px 0;color:inherit;font:inherit;cursor:pointer}
-.box{flex:0 0 36px;height:36px;border:2px solid #777;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:transparent}
-.item.on .box{background:#2ecc40;border-color:#2ecc40;color:#000}
-.item.on{border-color:#1f5f2a}
-.item.on b{color:#bfbfbf}
-b{display:block;font-size:17px;margin:2px 0 4px;color:#fff}
-small{display:block;font-size:14px;line-height:1.35;color:#b5b5b5}
-#inst{padding:8px 16px;border-bottom:1px solid #222;font-size:14px;color:#aaa}#ib{background:#2ecc40;color:#000;border:0;border-radius:8px;padding:8px 14px;font-weight:700;font-size:15px}
+h2{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#000;margin:24px 4px 8px}
+.item{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;background:#fff;border:2px solid #111;border-radius:12px;padding:14px;margin:8px 0;color:inherit;font:inherit;cursor:pointer}
+.box{flex:0 0 36px;height:36px;border:3px solid #111;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:transparent;background:#fff}
+.item.on .box{background:#0b5d1e;border-color:#0b5d1e;color:#fff}
+.item.on{border-color:#0b5d1e;background:#eef7f0}
+b{display:block;font-size:17px;margin:2px 0 4px;color:#111}
+small{display:block;font-size:14px;line-height:1.35;color:#333}
+#inst{padding:8px 16px;border-bottom:2px solid #111;font-size:14px;color:#111}#ib{background:#0b5d1e;color:#fff;border:0;border-radius:8px;padding:8px 14px;font-weight:700;font-size:15px}
 </style></head><body>
 <header><h1>PRE-TRIP INSPECTION</h1><span id="count">0/0</span></header>
 <div id="inst" hidden><button id="ib" type="button" hidden>Install app</button><span id="ih" hidden>Tap Share, then Add to Home Screen</span></div>
