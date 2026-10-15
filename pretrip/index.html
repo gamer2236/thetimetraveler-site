@@ -28,11 +28,24 @@ b{display:block;font-size:17px;margin:2px 0 4px;color:#111}
 small{display:block;font-size:14px;line-height:1.35;color:#333}
 #inst[hidden],#ib[hidden],#ih[hidden]{display:none}#ih{font-weight:600}#inst{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 16px;border-bottom:2px solid #111;font-size:14px;color:#111}#ib{background:#fff;color:#0b5d1e;border:2px solid #0b5d1e;border-radius:8px;padding:8px 14px;font-weight:700;font-size:15px}
 #vc{background:#fff;color:#000;font-weight:700;font-size:13px;text-align:center;padding:4px 8px;padding-top:max(4px,env(safe-area-inset-top));border-bottom:1px solid #111}
+#tabs{display:flex;border-bottom:2px solid #111;background:#fff}.tab{flex:1;background:#fff;color:#111;border:0;border-bottom:4px solid transparent;font:inherit;font-weight:800;font-size:16px;padding:12px 6px;cursor:pointer}.tab.sel{border-bottom-color:#111}
+#tips{padding:8px 18px 40px}#tips p{font-size:19px;line-height:1.5;color:#111;margin:16px 0}#tips h3{font-size:22px;font-weight:800;color:#000;margin:16px 0 4px}#tips strong{font-weight:800;color:#000}#tips .dgu{font-weight:800;font-size:24px}#tips[hidden],#list[hidden]{display:none}
 </style></head><body>
 <div id="vc" hidden>Total visits: <span id="vn"></span></div>
 <header><h1>PRE-TRIP INSPECTION</h1><span id="count">0/0</span></header>
 <div id="inst" hidden><button id="ib" type="button" hidden>Install app</button><span id="ih" hidden>Tap Share, then Add to Home Screen</span></div>
+<nav id="tabs"><button type="button" id="t1" class="tab sel">Pre Trip Checklist</button><button type="button" id="t2" class="tab">Tips To Pass</button></nav>
 <main id="list"></main>
+<section id="tips" hidden>
+<h3>Tips To Pass</h3>
+<p><strong>Repetition is KEY.</strong> Drill the pre-trip over and over until the words come without thinking.</p>
+<p><strong>Stuck on a section?</strong> Don't move on. Stay with it and start that section over from the beginning until it sticks.</p>
+<p><strong>Find a partner.</strong> Work through it together every day, from the front of the truck all the way to the rear. Those who go it alone have a harder time.</p>
+<p><strong>Watch others drill.</strong> When they say the wrong WORDS, tell them. When they struggle, help them remember. You're all in this together.</p>
+<p><strong>Start small.</strong> Learn a few pieces at a time, then add a little more each day.</p>
+<p><strong>Keep breaks short.</strong> Only stop when you truly need to. Keep at it.</p>
+<p class="dgu">Don't Give Up.</p>
+</section>
 <script>
 var S=[
 ["Front of Vehicle/Engine Area",[
@@ -78,6 +91,9 @@ function reset(){rows.forEach(function(r){r.classList.remove('on')});upd();windo
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')reset()});
 window.addEventListener('pagehide',reset);window.addEventListener('pageshow',function(e){if(e.persisted)reset()});
 upd();
+(function(){var t1=document.getElementById('t1'),t2=document.getElementById('t2'),tp=document.getElementById('tips');
+function show(tips){list.hidden=tips;tp.hidden=!tips;t1.classList.toggle('sel',!tips);t2.classList.toggle('sel',tips);window.scrollTo(0,0)}
+t1.onclick=function(){show(false)};t2.onclick=function(){show(true)};if(location.hash==='#tips')show(true)})();
 (function(){try{localStorage.removeItem('pretrip-installed')}catch(e){}
 var st=function(){return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true};
 var box=document.getElementById('inst'),ib=document.getElementById('ib'),ih=document.getElementById('ih'),dp=null;
