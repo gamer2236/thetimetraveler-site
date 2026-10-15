@@ -27,7 +27,9 @@ h2{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:1px;co
 b{display:block;font-size:17px;margin:2px 0 4px;color:#111}
 small{display:block;font-size:14px;line-height:1.35;color:#333}
 #inst{padding:8px 16px;border-bottom:2px solid #111;font-size:14px;color:#111}#ib{background:#0b5d1e;color:#fff;border:0;border-radius:8px;padding:8px 14px;font-weight:700;font-size:15px}
+#vc{background:#fff;color:#000;font-weight:700;font-size:13px;text-align:center;padding:4px 8px;padding-top:max(4px,env(safe-area-inset-top));border-bottom:1px solid #111}
 </style></head><body>
+<div id="vc" hidden>Total visits: <span id="vn"></span></div>
 <header><h1>PRE-TRIP INSPECTION</h1><span id="count">0/0</span></header>
 <div id="inst" hidden><button id="ib" type="button" hidden>Install app</button><span id="ih" hidden>Tap Share, then Add to Home Screen</span></div>
 <main id="list"></main>
@@ -87,6 +89,7 @@ if(!st()&&!inst()&&ios){box.hidden=false;ih.hidden=false}
 addEventListener('beforeinstallprompt',function(e){e.preventDefault();if(st()||inst())return;dp=e;box.hidden=false;ib.hidden=false});
 ib.onclick=function(){if(!dp)return;dp.prompt();dp.userChoice.then(function(c){if(c.outcome==='accepted')mark();dp=null;ib.hidden=true;if(ih.hidden)box.hidden=true})};
 addEventListener('appinstalled',mark);
+fetch('https://abacus.jasoncameron.dev/hit/two23six/cdl-pretrip-checklist',{cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){if(typeof d.value!=='number')throw 0;document.getElementById('vn').textContent=d.value.toLocaleString();document.getElementById('vc').hidden=false}).catch(function(){});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js',{scope:'/pretrip/'});
 })();
 </script></body></html>
