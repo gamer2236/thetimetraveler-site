@@ -26,7 +26,7 @@ h2{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:1px;co
 .item.on{border-color:#0b5d1e;background:#eef7f0}
 b{display:block;font-size:17px;margin:2px 0 4px;color:#111}
 small{display:block;font-size:14px;line-height:1.35;color:#333}
-#inst{padding:8px 16px;border-bottom:2px solid #111;font-size:14px;color:#111}#ib{background:#0b5d1e;color:#fff;border:0;border-radius:8px;padding:8px 14px;font-weight:700;font-size:15px}
+#inst[hidden],#ib[hidden],#ih[hidden]{display:none}#ih{font-weight:600}#inst{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 16px;border-bottom:2px solid #111;font-size:14px;color:#111}#ib{background:#fff;color:#0b5d1e;border:2px solid #0b5d1e;border-radius:8px;padding:8px 14px;font-weight:700;font-size:15px}
 #vc{background:#fff;color:#000;font-weight:700;font-size:13px;text-align:center;padding:4px 8px;padding-top:max(4px,env(safe-area-inset-top));border-bottom:1px solid #111}
 </style></head><body>
 <div id="vc" hidden>Total visits: <span id="vn"></span></div>
@@ -78,17 +78,16 @@ function reset(){rows.forEach(function(r){r.classList.remove('on')});upd();windo
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')reset()});
 window.addEventListener('pagehide',reset);window.addEventListener('pageshow',function(e){if(e.persisted)reset()});
 upd();
-(function(){var K='pretrip-installed',st=function(){return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true};
-function inst(){try{return localStorage.getItem(K)==='1'}catch(e){return false}}
-function mark(){try{localStorage.setItem(K,'1')}catch(e){}hide()}
+(function(){try{localStorage.removeItem('pretrip-installed')}catch(e){}
+var st=function(){return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true};
 var box=document.getElementById('inst'),ib=document.getElementById('ib'),ih=document.getElementById('ih'),dp=null;
-function hide(){box.hidden=true;ib.hidden=true;ih.hidden=true}
-if(st()){mark()}
-var ios=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!/crios|fxios|edgios/i.test(navigator.userAgent);
-if(!st()&&!inst()&&ios){box.hidden=false;ih.hidden=false}
-addEventListener('beforeinstallprompt',function(e){e.preventDefault();if(st()||inst())return;dp=e;box.hidden=false;ib.hidden=false});
-ib.onclick=function(){if(!dp)return;dp.prompt();dp.userChoice.then(function(c){if(c.outcome==='accepted')mark();dp=null;ib.hidden=true;if(ih.hidden)box.hidden=true})};
-addEventListener('appinstalled',mark);
+var ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+function sync(){if(st()){box.hidden=true}else{box.hidden=false;ib.hidden=false}}
+sync();try{matchMedia('(display-mode: standalone)').addEventListener('change',sync)}catch(e){}
+addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e});
+ib.onclick=function(){if(dp){var p=dp;dp=null;p.prompt();return}
+ih.textContent=ios?'Tap Share, then Add to Home Screen':'Open browser menu, then Install app / Add to Home screen';ih.hidden=false};
+})();
 fetch('https://abacus.jasoncameron.dev/hit/two23six/cdl-pretrip-checklist',{cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){if(typeof d.value!=='number')throw 0;document.getElementById('vn').textContent=d.value.toLocaleString();document.getElementById('vc').hidden=false}).catch(function(){});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js',{scope:'/pretrip/'});
 })();
