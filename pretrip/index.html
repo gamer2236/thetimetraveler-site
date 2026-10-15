@@ -9,6 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Pre-Trip">
 <meta name="robots" content="noindex">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
 <title>Pre-Trip Inspection</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -26,8 +28,10 @@ h2{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#9a9a9a;marg
 .item.on b{color:#bfbfbf}
 b{display:block;font-size:17px;margin:2px 0 4px;color:#fff}
 small{display:block;font-size:14px;line-height:1.35;color:#b5b5b5}
+#inst{padding:8px 16px;border-bottom:1px solid #222;font-size:14px;color:#aaa}#ib{background:#2ecc40;color:#000;border:0;border-radius:8px;padding:8px 14px;font-weight:700;font-size:15px}
 </style></head><body>
 <header><h1>PRE-TRIP INSPECTION</h1><span id="count">0/0</span></header>
+<div id="inst" hidden><button id="ib" type="button" hidden>Install app</button><span id="ih" hidden>Tap Share, then Add to Home Screen</span></div>
 <main id="list"></main>
 <script>
 var S=[
@@ -74,4 +78,17 @@ function reset(){rows.forEach(function(r){r.classList.remove('on')});upd();windo
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')reset()});
 window.addEventListener('pagehide',reset);window.addEventListener('pageshow',function(e){if(e.persisted)reset()});
 upd();
+(function(){var K='pretrip-installed',st=function(){return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true};
+function inst(){try{return localStorage.getItem(K)==='1'}catch(e){return false}}
+function mark(){try{localStorage.setItem(K,'1')}catch(e){}hide()}
+var box=document.getElementById('inst'),ib=document.getElementById('ib'),ih=document.getElementById('ih'),dp=null;
+function hide(){box.hidden=true;ib.hidden=true;ih.hidden=true}
+if(st()){mark()}
+var ios=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!/crios|fxios|edgios/i.test(navigator.userAgent);
+if(!st()&&!inst()&&ios){box.hidden=false;ih.hidden=false}
+addEventListener('beforeinstallprompt',function(e){e.preventDefault();if(st()||inst())return;dp=e;box.hidden=false;ib.hidden=false});
+ib.onclick=function(){if(!dp)return;dp.prompt();dp.userChoice.then(function(c){if(c.outcome==='accepted')mark();dp=null;ib.hidden=true;if(ih.hidden)box.hidden=true})};
+addEventListener('appinstalled',mark);
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js',{scope:'/pretrip/'});
+})();
 </script></body></html>
