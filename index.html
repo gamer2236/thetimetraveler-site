@@ -912,6 +912,16 @@
     @keyframes cg-pulse { 0%,100% { box-shadow: -3px 0 0 #ff2a3c, 3px 0 0 #00f0ff, 0 0 0 rgba(255,42,60,0); } 50% { box-shadow: -4px 0 0 #ff2a3c, 4px 0 0 #00f0ff, 0 0 18px rgba(0,240,255,0.45); } }
     @keyframes cg-shop-glitch { 0% { box-shadow: -5px 1px 0 #ff2a3c, 5px -1px 0 #00f0ff; } 50% { box-shadow: 4px -1px 0 #ff2a3c, -4px 1px 0 #00f0ff; } 100% { box-shadow: -3px 0 0 #ff2a3c, 3px 0 0 #00f0ff; } }
     @media (prefers-reduced-motion: reduce) { .cg-shop, .cg-link:hover .cg-shop { animation: none; } }
+    header .brand-logo { margin: 0.5rem auto 1rem; text-align: center; line-height: 0; }
+    .bl-wrap { position: relative; display: inline-block; width: min(92vw, 640px); }
+    .bl-img { display: block; width: 100%; height: auto; animation: bl-flick 3.6s infinite steps(1); }
+    .bl-ghost { position: absolute; inset: 0; opacity: 0; mix-blend-mode: screen; pointer-events: none; }
+    .bl-g1 { animation: bl-g1 3.6s infinite steps(1); }
+    .bl-g2 { animation: bl-g2 3.6s infinite steps(1); }
+    @keyframes bl-flick { 0%,100% { transform: none; opacity: 1; } 80% { transform: translateX(3px) skewX(-5deg); opacity: .7; } 83% { transform: translateX(-3px); opacity: 1; } 86% { transform: none; } }
+    @keyframes bl-g1 { 0%,79%,92%,100% { opacity: 0; } 80% { opacity: .9; transform: translate(-8px,1px); clip-path: inset(15% 0 55% 0); } 84% { opacity: .9; transform: translate(6px,-1px); clip-path: inset(60% 0 10% 0); } 88% { opacity: .8; transform: translate(-4px,0); clip-path: inset(35% 0 40% 0); } }
+    @keyframes bl-g2 { 0%,79%,92%,100% { opacity: 0; } 81% { opacity: .9; transform: translate(8px,-1px); clip-path: inset(50% 0 25% 0); } 85% { opacity: .9; transform: translate(-6px,1px); clip-path: inset(5% 0 70% 0); } 89% { opacity: .8; transform: translate(4px,0); clip-path: inset(70% 0 5% 0); } }
+    @media (prefers-reduced-motion: reduce) { .bl-img, .bl-g1, .bl-g2 { animation: none; } .bl-ghost { opacity: 0; } }
   </style>
 </head>
 <body>
@@ -939,7 +949,7 @@
 
   <main class="wrap">
     <header>
-      <h1 class="brand-title">TWO23SIX PRODUCTIONS</h1>
+      <h1 class="brand-logo"><span class="bl-wrap"><img class="bl-img" src="/covers/two23six-glitch-logo.png" alt="Two23siX" width="1024" height="200" /><img class="bl-img bl-ghost bl-g1" src="/covers/two23six-glitch-logo.png" alt="" aria-hidden="true" /><img class="bl-img bl-ghost bl-g2" src="/covers/two23six-glitch-logo.png" alt="" aria-hidden="true" /></span></h1>
     </header>
 
     <section id="coffee" class="coffee-glitch-sec" aria-label="Time Traveler Coffee">
