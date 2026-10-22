@@ -7,7 +7,7 @@
   <title>TWO23SIX PRODUCTIONS</title>
   <meta name="tt-cache" content="20261004-patreon" />
   <!-- ttb-layout:v5 -->
-  <meta name="description" content="MY WORK — books, music, The Time Traveler Bible, and more from TIME TRAVELER." />
+  <meta name="description" content="MY WORK — books, coffee, music, The Time Traveler Bible, and more from TIME TRAVELER." />
   <meta property="og:title" content="Two23siX.com" />
   <meta property="og:description" content="Books, music, film, and The Time Traveler Bible." />
   <meta property="og:image" content="https://two23six.com/og-share-v3.jpg?v=20260912b" />
@@ -889,6 +889,29 @@
     @media (max-width: 520px) { .nav-toggle { padding: 0.55rem 0.7rem; } .nav-toggle .label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }
     .site-nav a:hover, .site-nav a:focus-visible { color: var(--gold); background: rgba(196, 162, 90, 0.08); outline: none; }
 
+    .coffee-glitch-sec { text-align: center; margin: 1.5rem auto 2.5rem; }
+    .cg-link { display: inline-flex; flex-direction: column; align-items: center; gap: 0.9rem; text-decoration: none; color: #e8e2d4; }
+    .cg-cup { position: relative; width: clamp(110px, 28vw, 160px); aspect-ratio: 1; display: block; }
+    .cg-layer { position: absolute; inset: 0; display: block; }
+    .cg-base { color: #c4a25a; animation: cg-flicker 4s infinite steps(1); }
+    .cg-r, .cg-c { mix-blend-mode: screen; opacity: 0.8; }
+    .cg-r { color: #ff2a3c; animation: cg-r 4s infinite steps(1); }
+    .cg-c { color: #00f0ff; animation: cg-c 4s infinite steps(1); }
+    .cg-title { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; white-space: nowrap; font-size: clamp(1.35rem, 6.6vw, 2.6rem); letter-spacing: 0.02em; }
+    .cg-link:hover .cg-title, .cg-link:focus-visible .cg-title { color: #c4a25a; }
+    @keyframes cg-r { 0%,100% { transform: translate(-2px,0); clip-path: inset(0 0 0 0); }
+      82% { transform: translate(-7px,2px); clip-path: inset(10% 0 55% 0); } 85% { transform: translate(5px,-1px); clip-path: inset(60% 0 15% 0); }
+      88% { transform: translate(-4px,0); clip-path: inset(30% 0 40% 0); } 91% { transform: translate(-2px,0); clip-path: inset(0 0 0 0); } }
+    @keyframes cg-c { 0%,100% { transform: translate(2px,0); clip-path: inset(0 0 0 0); }
+      82% { transform: translate(7px,-2px); clip-path: inset(50% 0 20% 0); } 85% { transform: translate(-5px,1px); clip-path: inset(5% 0 70% 0); }
+      88% { transform: translate(4px,0); clip-path: inset(70% 0 5% 0); } 91% { transform: translate(2px,0); clip-path: inset(0 0 0 0); } }
+    @keyframes cg-flicker { 0%,100% { opacity: 1; transform: none; } 83% { opacity: 0.35; transform: translateX(3px) skewX(-6deg); } 86% { opacity: 1; transform: translateX(-3px); } 89% { opacity: 0.6; transform: none; } 92% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .cg-base, .cg-r, .cg-c { animation: none; } .cg-r { transform: translate(-2px,0); } .cg-c { transform: translate(2px,0); } }
+    .cg-shop { position: relative; display: inline-block; white-space: nowrap; font-family: "Oswald", "Impact", "Arial Narrow", sans-serif; font-stretch: condensed; font-weight: 800; text-transform: uppercase; letter-spacing: 0.22em; font-size: clamp(0.95rem, 4vw, 1.15rem); padding: 0.7em 1.6em 0.7em 1.82em; color: #fff; background: #000000; border: 2px solid #e8e2d4; box-shadow: -3px 0 0 #ff2a3c, 3px 0 0 #00f0ff; animation: cg-pulse 2.4s ease-in-out infinite; transition: transform .15s, color .15s; }
+    .cg-link:hover .cg-shop, .cg-link:focus-visible .cg-shop { color: #c4a25a; transform: scale(1.04); text-shadow: -2px 0 #ff2a3c, 2px 0 #00f0ff; animation: cg-shop-glitch .35s steps(2) infinite; }
+    @keyframes cg-pulse { 0%,100% { box-shadow: -3px 0 0 #ff2a3c, 3px 0 0 #00f0ff, 0 0 0 rgba(255,42,60,0); } 50% { box-shadow: -4px 0 0 #ff2a3c, 4px 0 0 #00f0ff, 0 0 18px rgba(0,240,255,0.45); } }
+    @keyframes cg-shop-glitch { 0% { box-shadow: -5px 1px 0 #ff2a3c, 5px -1px 0 #00f0ff; } 50% { box-shadow: 4px -1px 0 #ff2a3c, -4px 1px 0 #00f0ff; } 100% { box-shadow: -3px 0 0 #ff2a3c, 3px 0 0 #00f0ff; } }
+    @media (prefers-reduced-motion: reduce) { .cg-shop, .cg-link:hover .cg-shop { animation: none; } }
     header .brand-logo { margin: 0.5rem auto 1rem; text-align: center; line-height: 0; }
     .bl-wrap { position: relative; display: inline-block; width: min(92vw, 640px); }
     .bl-img { display: block; width: 100%; height: auto; animation: bl-flick 3.6s infinite steps(1); }
@@ -919,6 +942,7 @@
   <nav class="site-nav" id="site-nav" aria-label="Site sections">
     <a href="#music">Music</a>
     <a href="#books">Books</a>
+    <a href="/coffee/">Coffee</a>
     <a href="#support">Support</a>
     <a href="mailto:contact@two23six.com">Contact</a>
   </nav>
@@ -931,6 +955,33 @@
     <header>
       <h1 class="brand-logo"><span class="bl-wrap"><img class="bl-img" src="/assets/two23six-logo.png" alt="Two23siX" width="1306" height="280" /><img class="bl-img bl-ghost bl-g1" src="/assets/two23six-logo.png" alt="" aria-hidden="true" /><img class="bl-img bl-ghost bl-g2" src="/assets/two23six-logo.png" alt="" aria-hidden="true" /></span></h1>
     </header>
+
+    <section id="coffee" class="coffee-glitch-sec" aria-label="Time Traveler Coffee">
+      <a class="cg-link" href="/coffee/">
+        <span class="cg-cup">
+          <span class="cg-layer cg-base"><svg viewBox="0 0 120 120" width="100%" height="100%" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M42 30c-6-8 6-12 0-20M60 30c-6-8 6-12 0-20M78 30c-6-8 6-12 0-20" stroke="currentColor" stroke-width="5"/>
+  <path d="M24 42h68v22c0 19-15 34-34 34S24 83 24 64z" stroke="currentColor" stroke-width="7"/>
+  <path d="M92 50h6a12 12 0 0 1 0 24h-8" stroke="currentColor" stroke-width="7"/>
+  <path d="M16 108h88" stroke="currentColor" stroke-width="7"/>
+</svg></span>
+          <span class="cg-layer cg-r"><svg viewBox="0 0 120 120" width="100%" height="100%" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M42 30c-6-8 6-12 0-20M60 30c-6-8 6-12 0-20M78 30c-6-8 6-12 0-20" stroke="currentColor" stroke-width="5"/>
+  <path d="M24 42h68v22c0 19-15 34-34 34S24 83 24 64z" stroke="currentColor" stroke-width="7"/>
+  <path d="M92 50h6a12 12 0 0 1 0 24h-8" stroke="currentColor" stroke-width="7"/>
+  <path d="M16 108h88" stroke="currentColor" stroke-width="7"/>
+</svg></span>
+          <span class="cg-layer cg-c"><svg viewBox="0 0 120 120" width="100%" height="100%" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M42 30c-6-8 6-12 0-20M60 30c-6-8 6-12 0-20M78 30c-6-8 6-12 0-20" stroke="currentColor" stroke-width="5"/>
+  <path d="M24 42h68v22c0 19-15 34-34 34S24 83 24 64z" stroke="currentColor" stroke-width="7"/>
+  <path d="M92 50h6a12 12 0 0 1 0 24h-8" stroke="currentColor" stroke-width="7"/>
+  <path d="M16 108h88" stroke="currentColor" stroke-width="7"/>
+</svg></span>
+        </span>
+        <span class="cg-title">Time Traveler Coffee</span>
+        <span class="cg-shop">SHOP NOW</span>
+      </a>
+    </section>
 
     <section id="music" class="music-section" aria-label="Two23siX Music">
       <div class="sec-head">
